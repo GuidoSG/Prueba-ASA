@@ -73,7 +73,7 @@ http://localhost:4173
 
 ## Entregable
 
-La idea es que nos compartas el resultado como repositorio GitHub, sdemás, agrega un archivo llamado: SOLUTION_NOTES (puede ser .md o .pdf). En ese archivo cuéntanos la manera en que trabajaste y ordenaste las ideas, los problemas hallados y sus soluciones si lo ameritan, supuestos usados etc. La idea es reflejar tu razonamiento.
+La idea es que nos compartas el resultado como repositorio GitHub, además, agrega un archivo llamado: SOLUTION_NOTES (puede ser .md o .pdf). En ese archivo cuéntanos la manera en que trabajaste y ordenaste las ideas, los problemas hallados y sus soluciones si lo ameritan, supuestos usados etc. La idea es reflejar tu razonamiento.
 
 Consideraciones:
 - Puedes usar documentación, internet o herramientas de apoyo.

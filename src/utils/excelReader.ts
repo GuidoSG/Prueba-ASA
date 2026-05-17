@@ -25,8 +25,20 @@ export async function calculateMetrics(): Promise<ClientMetrics> {
   const totalClients = data.length
 
   // Calcular promedio de edad de todos los registros
-  const totalAge = data.reduce((sum, r) => sum + (r.age || 0), 0)
-  const avgAge = totalAge / totalClients
+  const validAgeRecords = data.filter(r => r.age && r.age < 99)
+const sortedAges = validAgeRecords.map(r => r.age).sort((a, b) => a - b)
+const mid = Math.floor(sortedAges.length / 2)
+const medianAge = sortedAges.length % 2 !== 0
+  ? sortedAges[mid]
+  : (sortedAges[mid - 1] + sortedAges[mid]) / 2
+
+const imputedData = data.map(r => ({
+  ...r,
+  age: r.age === 99 ? medianAge : r.age
+}))
+
+const totalAge = imputedData.reduce((sum, r) => sum + r.age, 0)
+const avgAge = totalAge / imputedData.length
 
   const totalSalary = data.reduce((sum, r) => sum + (r.salary || 0), 0)
   const avgSalary = totalSalary / totalClients

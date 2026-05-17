@@ -3,7 +3,7 @@ import './index.css'
 import { validateAccess } from './config'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Services from './components/Services'
+import ServicesScroll from './components/ServicesScroll'
 import Metrics from './components/Metrics'
 import Pitch from './components/Pitch'
 import Footer from './components/Footer'
@@ -56,7 +56,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Services />
+        <ServicesScroll />
         <Metrics />
         <Pitch />
       </main>

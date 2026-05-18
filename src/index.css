@@ -1,14 +1,14 @@
 :root {
-  --primary: #1a1f2e;
-  --primary-dark: #141824;
-  --secondary: #ff6b35;
-  --accent: #4f8ef7;
-  --bg: #f8f9fb;
+  --primary: #0f1c2e;
+  --primary-dark: #0a1220;
+  --secondary: #00e676;
+  --accent: #2d4a6e;
+  --bg: #f4f7f9;
   --bg-card: #ffffff;
-  --bg-dark: #eef1f7;
-  --text: #1a1f2e;
+  --bg-dark: #e8f0f7;
+  --text: #0f1c2e;
   --text-light: #ffffff;
-  --text-muted: #888888;
+  --text-muted: #6b7a8d;
   --white: #ffffff;
   --font: Arial, Helvetica, sans-serif;
   --radius: 8px;
@@ -85,6 +85,7 @@ body {
   justify-content: center;
   overflow: hidden;
   padding-top: 80px;
+  border-bottom: 3px solid var(--secondary);
 }
 
 .hero-bg {
@@ -113,13 +114,15 @@ body {
 
 .hero-badge {
   display: inline-block;
-  padding: 4px 10px;
-  background: var(--secondary);
-  color: var(--white);
+  padding: 4px 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.9);
   font-size: 0.72rem;
   font-weight: bold;
   margin-bottom: 18px;
   border-radius: 4px;
+  letter-spacing: 0.05em;
 }
 
 .hero-title {
@@ -152,8 +155,8 @@ body {
   display: inline-block;
   padding: 12px 24px;
   border-radius: var(--radius);
-  background: var(--secondary);
-  color: var(--white);
+  background: var(--white);
+  color: var(--primary);
   font-size: 0.9rem;
   font-weight: bold;
   text-decoration: none;
@@ -164,8 +167,8 @@ body {
   padding: 11px 24px;
   border-radius: var(--radius);
   background: transparent;
-  border: 2px solid var(--white);
-  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.9);
   font-size: 0.9rem;
   font-weight: bold;
   text-decoration: none;
@@ -262,7 +265,7 @@ body {
 .metrics {
   background: var(--primary);
   border-top: none;
-  border-bottom: none;
+  border-bottom: 3px solid var(--secondary);
 }
 
 .metrics .section-label {
@@ -345,8 +348,8 @@ body {
   gap: 16px;
   font-size: 0.88rem;
   color: rgba(255,255,255,0.65);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 16px;
   padding: 32px 24px;
   text-align: center;
@@ -427,11 +430,36 @@ body {
   gap: 20px;
 }
 
-.footer-top {
+.footer-brand-wrap {
+  text-align: center;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+}
+
+.footer-middle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  justify-content: center;
+}
+
+.footer-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 280px;
+}
+
+.footer-form-wrap h4 {
+  font-size: 0.78rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 4px;
 }
 
 .footer-brand {
@@ -663,7 +691,7 @@ body {
 }
 
 .metric-card-new {
-  background: transparent;
+  background: rgba(255,255,255,0.08);
   padding: 40px 24px;
   text-align: center;
   display: flex;
@@ -714,4 +742,150 @@ body {
   font-size: 1.05rem;
   display: block;
   margin-bottom: 6px;
+}
+
+/* ── PITCH CARDS (estilo Transforme) ─────── */
+.pitch-cards {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pitch-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  flex: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s ease;
+}
+
+.pitch-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pitch-card:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.pitch-card-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.pitch-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pitch-card-tag {
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--secondary);
+}
+
+.pitch-card-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.pitch-card-text strong {
+  color: var(--white);
+}
+
+/* ── FOOTER FORM ─────────────────────────── */
+.footer-contact-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 0 16px;
+}
+
+.footer-contact-form h4 {
+  font-size: 0.78rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.footer-input::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+.footer-input:focus {
+  border-color: var(--secondary);
+}
+
+.footer-textarea {
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  color: var(--white);
+  font-size: 0.88rem;
+  outline: none;
+  resize: none;
+  font-family: var(--font);
+}
+
+.footer-textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+.footer-textarea:focus {
+  border-color: var(--secondary);
+}
+
+.footer-form-btn {
+  align-self: center;
+  padding: 10px 24px;
+  background: var(--secondary);
+  color: var(--primary);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer-form-btn:hover {
+  opacity: 0.9;
 }

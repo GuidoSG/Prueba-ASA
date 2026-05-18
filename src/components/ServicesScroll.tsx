@@ -5,25 +5,25 @@ const services = [
     icon: '📊',
     title: 'Análisis de Datos',
     desc: 'Convertimos datos crudos en insights accionables. Identificamos patrones, tendencias y oportunidades que tu negocio todavía no está viendo.',
-    bg: '#1a1f2e',
+    image: 'https://images.pexels.com/photos/20232209/pexels-photo-20232209.jpeg',
   },
   {
     icon: '⚡',
     title: 'Automatización',
     desc: 'Eliminamos tareas repetitivas de tus procesos. Desde reportes automáticos hasta flujos de trabajo inteligentes que trabajan por ti.',
-    bg: '#141824',
+    image: 'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=1600&q=80',
   },
   {
     icon: '🤖',
     title: 'IA Aplicada',
     desc: 'Modelos de inteligencia artificial adaptados a tu industria y escala. Soluciones prácticas, no tecnología por tecnología.',
-    bg: '#1e2435',
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg',
   },
   {
     icon: '📈',
     title: 'Dashboards',
     desc: 'Visualizaciones claras e interactivas para que puedas tomar decisiones en tiempo real, sin depender de terceros.',
-    bg: '#12161f',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1600&q=80',
   },
 ]
 
@@ -42,15 +42,13 @@ export default function ServicesScroll() {
       )
       setActivo(index)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <section id="servicios" ref={sectionRef}
-      style={{ height: `${services.length * 100}vh`, position: 'relative' }}>
-
+      style={{ height: `${services.length * 100}vh`, position: 'relative', borderBottom: '3px solid #00e676' }}>
       <div style={{
         position: 'sticky',
         top: 0,
@@ -59,65 +57,88 @@ export default function ServicesScroll() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: services[activo].bg,
-        transition: 'background 0.6s ease',
+        overflow: 'hidden',
         padding: '0 5%',
       }}>
-        <p style={{
-          fontSize: '0.72rem',
-          fontWeight: 'bold',
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: '#ff6b35',
-          marginBottom: '48px',
-        }}>
-          Lo que hacemos
-        </p>
 
+        {/* Imágenes de fondo */}
+        {services.map((s, i) => (
+          <div key={i} style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: `url(${s.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: i === activo ? 1 : 0,
+            transition: 'opacity 0.8s ease',
+            zIndex: 0,
+          }} />
+        ))}
+
+        {/* Overlay oscuro */}
         <div style={{
-          fontSize: '5rem',
-          marginBottom: '24px',
-          transition: 'all 0.4s ease',
-        }}>
-          {services[activo].icon}
-        </div>
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(10, 15, 30, 0.6)',
+          zIndex: 1,
+        }} />
 
-        <h2 style={{
-          fontSize: '2.5rem',
-          fontWeight: 900,
-          color: '#ffffff',
-          marginBottom: '20px',
-          textAlign: 'center',
-          transition: 'all 0.4s ease',
-        }}>
-          {services[activo].title}
-        </h2>
-
-        <p style={{
-          fontSize: '1.05rem',
-          color: 'rgba(255,255,255,0.7)',
-          maxWidth: '600px',
-          textAlign: 'center',
-          lineHeight: 1.7,
-          transition: 'all 0.4s ease',
-        }}>
-          {services[activo].desc}
-        </p>
-
+        {/* Contenido con cuadro sutil */}
         <div style={{
-          display: 'flex',
-          gap: '10px',
-          marginTop: '48px',
+          position: 'relative',
+          zIndex: 2,
+          textAlign: 'center',
+          background: 'rgba(255,255,255,0.06)',
+          backdropFilter: 'blur(8px)',
+          borderRadius: '20px',
+          border: '1px solid rgba(255,255,255,0.1)',
+          padding: '48px 56px',
+          maxWidth: '680px',
         }}>
-          {services.map((_, i) => (
-            <div key={i} style={{
-              width: i === activo ? '28px' : '8px',
-              height: '8px',
-              borderRadius: '4px',
-              background: i === activo ? '#ff6b35' : 'rgba(255,255,255,0.2)',
-              transition: 'all 0.4s ease',
-            }} />
-          ))}
+          <p style={{
+            fontSize: '0.72rem',
+            fontWeight: 'bold',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: '#00e676',
+            marginBottom: '24px',
+          }}>
+            Lo que hacemos
+          </p>
+
+          <div style={{ fontSize: '4rem', marginBottom: '20px' }}>
+            {services[activo].icon}
+          </div>
+
+          <h2 style={{
+            fontSize: '2.2rem',
+            fontWeight: 900,
+            color: '#ffffff',
+            marginBottom: '16px',
+          }}>
+            {services[activo].title}
+          </h2>
+
+          <p style={{
+            fontSize: '1rem',
+            color: 'rgba(255,255,255,0.8)',
+            lineHeight: 1.7,
+            marginBottom: '32px',
+          }}>
+            {services[activo].desc}
+          </p>
+
+          <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+            {services.map((_, i) => (
+              <div key={i} style={{
+                width: i === activo ? '28px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                background: i === activo ? '#00e676' : 'rgba(255,255,255,0.2)',
+                transition: 'all 0.4s ease',
+              }} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -23,6 +23,7 @@ export default function Footer() {
               <li><a href="#servicios">Análisis de Datos</a></li>
               <li><a href="#servicios">Automatización</a></li>
               <li><a href="#servicios">IA Aplicada</a></li>
+              <li><a href="#servicios">Dashboards</a></li>
             </ul>
           </div>
           <div className="footer-col">

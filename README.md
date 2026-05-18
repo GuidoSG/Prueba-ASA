@@ -117,11 +117,19 @@ cd <NOMBRE_REPOSITORIO>
 
 ### 2. Instalar dependencias
 
-```
+​```
 npm install
-```
+​```
 
-### 3. Ejecutar la aplicación
+### 3. Configurar variables de entorno
+
+Crear un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+
+​```
+VITE_ACCESS_TOKEN=challenge-access-2024
+​```
+
+### 4. Ejecutar la aplicación
 
 ```
 npm run dev

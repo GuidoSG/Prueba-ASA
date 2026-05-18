@@ -81,9 +81,10 @@ body {
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
-  padding-top: 140px;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
+  padding-top: 80px;
 }
 
 .hero-bg {
@@ -103,9 +104,11 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: left;
+  text-align: center;
   padding: 0 5%;
-  max-width: 700px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: -70vh;
 }
 
 .hero-badge {
@@ -142,6 +145,7 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .btn-primary {
@@ -318,7 +322,8 @@ body {
 
 /* ── PITCH ───────────────────────────────── */
 .pitch {
-  background: var(--bg);
+  background: var(--primary);
+  text-align: center;
 }
 
 .pitch-inner {
@@ -327,32 +332,43 @@ body {
 
 .pitch-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 32px;
 }
 
 .pitch-list li {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pitch-list li:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
 }
 
 .pitch-check {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--secondary);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(79, 142, 247, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
+  font-size: 1.2rem;
   color: var(--white);
-  margin-top: 2px;
 }
 
 .pitch-cta {
@@ -674,4 +690,28 @@ body {
 .metric-note-new {
   font-size: 0.78rem;
   color: rgba(255,255,255,0.35);
+}
+
+.pitch .section-label {
+  color: var(--secondary);
+}
+
+.pitch .section-title {
+  color: var(--white);
+}
+
+.pitch .section-subtitle {
+  color: rgba(255,255,255,0.6);
+}
+
+.pitch .pitch-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.pitch-list li strong {
+  color: var(--white);
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 6px;
 }
